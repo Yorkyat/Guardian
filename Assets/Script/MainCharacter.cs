@@ -16,15 +16,18 @@ public class MainCharacter : MonoBehaviour
     {
         Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-        if (moveVector != Vector3.zero)
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            transform.rotation = Quaternion.LookRotation(moveVector);
-            transform.Translate(moveVector * moveSpeed * Time.deltaTime, Space.World);
-            anim.SetBool("Run", true);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
+            if (moveVector != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(moveVector);
+                transform.Translate(moveVector * moveSpeed * Time.deltaTime, Space.World);
+                anim.SetBool("Run", true);
+            }
+            else
+            {
+                anim.SetBool("Run", false);
+            }
         }
     }
 
