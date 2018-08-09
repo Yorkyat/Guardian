@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MainCharacter : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class MainCharacter : MonoBehaviour
     public float moveSpeed = 5f;
     public Joystick joystick;
     private Animator anim;
+    public GameObject bullet;
+    public Transform firingPoint;
+    private Transform tempFiringPoint;
 
     void Start()
     {
@@ -35,11 +39,44 @@ public class MainCharacter : MonoBehaviour
     {
         if (anim.GetBool("Run"))
         {
-            anim.Play("Run02_Attack");
+            // check if not running and attacking
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Run02_Attack"))
+            {
+                anim.Play("Run02_Attack");
+                StartCoroutine(RunAttackCoroutine(0.1f));
+            }
         }
         else
         {
-            anim.Play("Attack");
+            // check if not attacking
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                anim.Play("Attack");
+                StartCoroutine(AttackCoroutine(0.2f));
+            }
         }
+    }
+
+    IEnumerator AttackCoroutine(float time)
+    {
+        // delay to get the actual firing point
+        yield return new WaitForSeconds(time);
+        tempFiringPoint = firingPoint.transform;
+
+        Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
+
+        yield return new WaitForSeconds(time);
+        Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
+
+        yield return new WaitForSeconds(time);
+        Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
+    }
+
+    IEnumerator RunAttackCoroutine(float time)
+    {
+        // delay to get the actual firing point
+        yield return new WaitForSeconds(time);
+        tempFiringPoint = firingPoint.transform;
+        Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
     }
 }

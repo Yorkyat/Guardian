@@ -2252,6 +2252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   joystick: {fileID: 1983896284}
+  bullet: {fileID: 1661973078490876, guid: 894ef3c361aaeb248ab6393bb19f6f86, type: 2}
+  firingPoint: {fileID: 1586227333}
 --- !u!95 &802736951
 Animator:
   serializedVersion: 3
