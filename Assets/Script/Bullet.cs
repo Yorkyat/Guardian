@@ -20,4 +20,9 @@ public class Bullet : MonoBehaviour
         mRigidBody.velocity = transform.forward * speed;
         Destroy(gameObject, 1.0f);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
