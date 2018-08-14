@@ -20519,6 +20519,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 61b97740c583897489a513fc3a88ba3b, type: 2}
+    - target: {fileID: 100012, guid: e607f74860c67814e93c914b710142d5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e607f74860c67814e93c914b710142d5, type: 3}
   m_IsPrefabAsset: 0
@@ -20612,6 +20616,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee31043acbf5994a872cf337ff87a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1053946427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053946418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ce7f775a215f54e8cc149fe37c193a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  sinkSpeed: 2.5
 --- !u!1 &1055206754
 GameObject:
   m_ObjectHideFlags: 0

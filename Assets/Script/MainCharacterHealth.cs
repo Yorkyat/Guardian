@@ -22,9 +22,14 @@ public class MainCharacterHealth : MonoBehaviour
 
     public void Damage(int amount)
     {
+        if (isDead)
+        {
+            return;
+        }
+
         currentHealth -= amount;
 
-        if(currentHealth <= 0 && !isDead)
+        if(currentHealth <= 0)
         {
             Death();
         }

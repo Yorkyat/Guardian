@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float speed;
+    public int attackDamge = 10;
 
     private Rigidbody mRigidBody;
-    public float speed;
+    private GameObject player;
+    private MainCharacterHealth mainCharacterHealth;
 
     // Use this for initialization
     void Start()
     {
         mRigidBody = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        mainCharacterHealth = player.GetComponent<MainCharacterHealth>();
     }
 
     // Update is called once per frame
@@ -23,6 +28,13 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.tag == "Enemy")
+        {
+            if(collision.collider.GetComponent<EnemyHealth>().currentHealth > 0 && mainCharacterHealth.currentHealth > 0)
+            {
+                collision.collider.GetComponent<EnemyHealth>().Damage(attackDamge);
+            }
+        }
         Destroy(gameObject);
     }
 }

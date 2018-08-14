@@ -10,6 +10,7 @@ public class SlimeAttack : MonoBehaviour
     private Animator anim;
     private GameObject player;
     private MainCharacterHealth mainCharacterHealth;
+    private EnemyHealth enemyHealth;
     private bool playerInRange;
     private float attackTimer;
 
@@ -17,6 +18,7 @@ public class SlimeAttack : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mainCharacterHealth = player.GetComponent<MainCharacterHealth>();
+        enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent<Animator>();
     }
 
@@ -24,12 +26,12 @@ public class SlimeAttack : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        if(attackTimer >= attackOffset && playerInRange)
+        if (attackTimer >= attackOffset && playerInRange && mainCharacterHealth.currentHealth > 0 && enemyHealth.currentHealth > 0)
         {
             Attack();
         }
 
-        if(mainCharacterHealth.currentHealth <= 0)
+        if (mainCharacterHealth.currentHealth <= 0)
         {
             anim.SetTrigger("PlayerDead");
         }
@@ -37,7 +39,7 @@ public class SlimeAttack : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             playerInRange = true;
         }
@@ -45,7 +47,7 @@ public class SlimeAttack : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             playerInRange = false;
         }
@@ -58,7 +60,7 @@ public class SlimeAttack : MonoBehaviour
 
         anim.Play("slime_attack");
 
-        if(mainCharacterHealth.currentHealth > 0)
+        if (mainCharacterHealth.currentHealth > 0)
         {
             mainCharacterHealth.Damage(attackDamge);
         }
