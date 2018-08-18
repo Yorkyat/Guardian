@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeAttack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     public float attackOffset = 1.0f;
     public int attackDamge = 10;
