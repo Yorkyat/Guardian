@@ -11,13 +11,19 @@ public class MainCharacterHealth : MonoBehaviour
     private Animator anim;
     private MainCharacter mainCharacter;
     private bool isDead;
+    private HPBar hPBar;
 
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
 
         currentHealth = startingHealth;
+    }
+
+    void Start()
+    {
+        InitializeHealthBar();
     }
 
     public void Damage(int amount)
@@ -28,6 +34,7 @@ public class MainCharacterHealth : MonoBehaviour
         }
 
         currentHealth -= amount;
+        hPBar.Set(startingHealth, currentHealth);
 
         if(currentHealth <= 0)
         {
@@ -43,5 +50,12 @@ public class MainCharacterHealth : MonoBehaviour
         anim.SetTrigger("Dead");
 
         mainCharacter.enabled = false;
+    }
+
+    void InitializeHealthBar()
+    {
+        hPBar = Instantiate(Resources.Load<HPBar>("Prefabs/HP Bar"), FindObjectOfType<Canvas>().transform) as HPBar;
+        hPBar.target = gameObject;
+        hPBar.Set(startingHealth, currentHealth);
     }
 }

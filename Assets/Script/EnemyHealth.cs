@@ -14,14 +14,21 @@ public class EnemyHealth : MonoBehaviour
     private EnemyMovement enemyMovement;
     private bool isDead;
     private bool isSinking;
+    private HPBar hPBar;
 
-    void Start()
+
+    void Awake()
     {
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         enemyMovement = GetComponent<EnemyMovement>();
 
         currentHealth = startingHealth;
+    }
+
+    void Start()
+    {
+        InitializeHealthBar();
     }
 
     void Update()
@@ -40,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         currentHealth -= amount;
+        hPBar.Set(startingHealth, currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -62,5 +70,12 @@ public class EnemyHealth : MonoBehaviour
         anim.enabled = false;
         isSinking = true;
         Destroy(gameObject, 2.0f);
+    }
+
+    void InitializeHealthBar()
+    {
+        hPBar = Instantiate(Resources.Load<HPBar>("Prefabs/HP Bar"), FindObjectOfType<Canvas>().transform) as HPBar;
+        hPBar.target = gameObject;
+        hPBar.Set(startingHealth, currentHealth);
     }
 }
