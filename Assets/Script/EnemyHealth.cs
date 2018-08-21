@@ -74,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
 
     void InitializeHealthBar()
     {
-        hPBar = Instantiate(Resources.Load<HPBar>("Prefabs/HP Bar"), FindObjectOfType<Canvas>().transform) as HPBar;
+        hPBar = Instantiate(Resources.Load<HPBar>("Prefabs/HP Bar"), FindObjectOfType<Canvas>().transform.Find("HP Display").transform) as HPBar;
         hPBar.target = gameObject;
         hPBar.Set(startingHealth, currentHealth);
     }
