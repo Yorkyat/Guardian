@@ -1550,7 +1550,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacterHealth: {fileID: 802736953}
-  enemy: {fileID: 1579486122824668, guid: 5a27455fa30559746ad746af03bf6b87, type: 2}
+  enemyArray:
+  - {fileID: 1579486122824668, guid: 5a27455fa30559746ad746af03bf6b87, type: 2}
+  - {fileID: 1509250261646164, guid: a417c66dc3e938c4babe588849382382, type: 2}
+  - {fileID: 1593185990250612, guid: cea19ee518e7ec141b096fcb0f968342, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 858263214}
