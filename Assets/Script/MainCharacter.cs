@@ -11,7 +11,7 @@ public class MainCharacter : MonoBehaviour
     public Transform firingPoint;
     private Transform tempFiringPoint;
 
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
     }

@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     private MainCharacterHealth mainCharacterHealth;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         mRigidBody = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
