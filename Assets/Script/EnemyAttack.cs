@@ -58,7 +58,7 @@ public class EnemyAttack : MonoBehaviour
         // reset timer
         attackTimer = 0f;
 
-        anim.Play("slime_attack");
+        anim.Play("Attack");
 
         if (mainCharacterHealth.currentHealth > 0)
         {
