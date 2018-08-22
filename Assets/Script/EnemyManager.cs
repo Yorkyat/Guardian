@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -9,6 +10,16 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 3.0f;
     public Transform[] spawnPoints;
 
+    private List<GameObject> curEnemyList;
+    private List<int> enemyNumList;
+
+    void Awake()
+    {
+        curEnemyList = new List<GameObject>();
+        enemyNumList = new List<int>();
+        LevelSetUp();
+    }
+
     void Start()
     {
         InvokeRepeating("Spawn", 1.0f, spawnTime);
@@ -16,14 +27,39 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        if(mainCharacterHealth.currentHealth <= 0)
+        if (mainCharacterHealth.currentHealth <= 0 || curEnemyList.Count == 0)
         {
             return;
         }
 
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-        int enemyIndex = Random.Range(0, enemyArray.Length);
-        Instantiate(enemyArray[enemyIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+
+        int enemyIndex = Random.Range(0, curEnemyList.Count);
+        enemyNumList[enemyIndex]--;
+
+        Instantiate(curEnemyList[enemyIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+
+        if (enemyNumList[enemyIndex] == 0)
+        {
+            enemyNumList.RemoveAt(enemyIndex);
+            curEnemyList.RemoveAt(enemyIndex);
+        }
     }
 
+    void LevelSetUp()
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 0:
+                // Level 1
+                curEnemyList.Add(enemyArray[0]);
+                curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 10;
+                curEnemyList[0].GetComponent<EnemyHealth>().startingHealth = 100;
+                enemyNumList.Add(10);
+                break;
+        }
+
+
+
+    }
 }
