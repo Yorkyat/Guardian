@@ -50,7 +50,7 @@ public class EnemyManager : MonoBehaviour
     {
         switch (SceneManager.GetActiveScene().buildIndex)
         {
-            case 0:
+            case 1:
                 // Level 1
                 curEnemyList.Add(enemyArray[0]);
                 curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 10;
