@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     public Image loadingBar;
     public GameObject loadingImage;
 
     private AsyncOperation async;
 
-    public void NewGame()
+    public void LoadNextLevel()
     {
         loadingImage.SetActive(true);
-        StartCoroutine(LoadLevelWithBar(1));
+        StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     IEnumerator LoadLevelWithBar(int level)
