@@ -59,13 +59,13 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
         capsuleCollider.isTrigger = true;
+        GetComponent<NavMeshAgent>().enabled = false;
         anim.SetTrigger("Dead");
     }
 
     public void StartSinking()
     {
         enemyMovement.enabled = false;
-        GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         anim.enabled = false;
         isSinking = true;
