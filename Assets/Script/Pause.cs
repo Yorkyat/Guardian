@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 {
     public GameObject joystick;
     public GameObject fireButton;
+    public GameObject pausePanel;
 
     private bool paused;
     private FixedJoystick joystickScript;
@@ -23,11 +24,6 @@ public class Pause : MonoBehaviour
         paused = false;
     }
 
-    void Update()
-    {
-
-    }
-
     public void PauseGame(bool state)
     {
         paused = state;
@@ -37,12 +33,14 @@ public class Pause : MonoBehaviour
             Time.timeScale = 0;
             joystickScript.enabled = false;
             fireButtonScript.enabled = false;
+            pausePanel.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
             joystickScript.enabled = true;
             fireButtonScript.enabled = true;
+            pausePanel.SetActive(false);
         }
     }
 }

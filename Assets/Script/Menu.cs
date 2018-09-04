@@ -27,6 +27,20 @@ public class Menu : MonoBehaviour
         }
     }
 
+    public void RestartLevel()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex));
+        Time.timeScale = 1;
+    }
+
+    public void BackToMainMenu()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar(0));
+        Time.timeScale = 1;
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
