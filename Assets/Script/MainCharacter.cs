@@ -6,14 +6,17 @@ public class MainCharacter : MonoBehaviour
 
     public float moveSpeed = 5f;
     public Joystick joystick;
-    private Animator anim;
     public GameObject bullet;
     public Transform firingPoint;
+
+    private Animator anim;
     private Transform tempFiringPoint;
+    private AudioSource firiingAudio;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        firiingAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -63,12 +66,15 @@ public class MainCharacter : MonoBehaviour
         yield return new WaitForSeconds(time);
         tempFiringPoint = firingPoint.transform;
 
+        firiingAudio.Play();
         Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
 
         yield return new WaitForSeconds(time);
+        firiingAudio.Play();
         Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
 
         yield return new WaitForSeconds(time);
+        firiingAudio.Play();
         Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
     }
 
@@ -77,6 +83,7 @@ public class MainCharacter : MonoBehaviour
         // delay to get the actual firing point
         yield return new WaitForSeconds(time);
         tempFiringPoint = firingPoint.transform;
+        firiingAudio.Play();
         Instantiate(bullet, tempFiringPoint.position, tempFiringPoint.rotation);
     }
 }
