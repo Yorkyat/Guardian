@@ -8,10 +8,11 @@ public class MainCharacter : MonoBehaviour
     public Joystick joystick;
     public GameObject bullet;
     public Transform firingPoint;
+    public AudioSource firiingAudio;
+    public AudioSource movingAudio;
 
     private Animator anim;
     private Transform tempFiringPoint;
-    private AudioSource firiingAudio;
 
     void Awake()
     {
@@ -30,10 +31,20 @@ public class MainCharacter : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(moveVector);
                 transform.Translate(moveVector * moveSpeed * Time.deltaTime, Space.World);
                 anim.SetBool("Run", true);
+
+                if (!movingAudio.isPlaying)
+                {
+                    movingAudio.Play();
+                }
             }
             else
             {
                 anim.SetBool("Run", false);
+
+                if (movingAudio.isPlaying)
+                {
+                    movingAudio.Stop();
+                }
             }
         }
     }
