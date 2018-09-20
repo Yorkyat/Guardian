@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
 {
     public Image loadingBar;
     public GameObject loadingImage;
+    public AudioSource backgroundMusic;
 
     private AsyncOperation async;
 
@@ -19,6 +20,11 @@ public class Menu : MonoBehaviour
 
     IEnumerator LoadLevelWithBar(int level)
     {
+        if (backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Stop();
+        }
+
         async = SceneManager.LoadSceneAsync(level);
         while (!async.isDone)
         {
