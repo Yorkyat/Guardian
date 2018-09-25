@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static GameManager manager;
+
+    void Awake()
+    {
+        if(manager == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            manager = this;
+        }
+        else if(manager != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
