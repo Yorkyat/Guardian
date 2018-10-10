@@ -9968,21 +9968,31 @@ Prefab:
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_MinValue
-      value: -80
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_MaxValue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_Value
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157167678774616, guid: 6df82d86d2851e047b0a24179485ec89, type: 2}
+      propertyPath: m_Name
+      value: Music Volume Slider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df82d86d2851e047b0a24179485ec89, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &563659485 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
+    type: 2}
+  m_PrefabInternal: {fileID: 563659484}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &563950391
 Prefab:
   m_ObjectHideFlags: 0
@@ -23238,6 +23248,8 @@ MonoBehaviour:
   loadingBar: {fileID: 744173012}
   loadingImage: {fileID: 744173013}
   backgroundMusic: {fileID: 55137200}
+  musicVolSlider: {fileID: 563659485}
+  sfxVolSlider: {fileID: 1770136682}
 --- !u!1001 &1288927455
 Prefab:
   m_ObjectHideFlags: 0
@@ -31185,21 +31197,31 @@ Prefab:
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_MinValue
-      value: -80
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_MaxValue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
         type: 2}
       propertyPath: m_Value
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157167678774616, guid: 6df82d86d2851e047b0a24179485ec89, type: 2}
+      propertyPath: m_Name
+      value: Effect Volume Slider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df82d86d2851e047b0a24179485ec89, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1770136682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114441693784307770, guid: 6df82d86d2851e047b0a24179485ec89,
+    type: 2}
+  m_PrefabInternal: {fileID: 1770136681}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1770605757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 379d951ea34f82c4291e103a95a686b3,

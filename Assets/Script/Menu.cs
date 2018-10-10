@@ -11,6 +11,20 @@ public class Menu : MonoBehaviour
     public AudioSource backgroundMusic;
 
     private AsyncOperation async;
+    public Slider musicVolSlider;
+    public Slider sfxVolSlider;
+
+    void Start()
+    {
+        if (musicVolSlider != null)
+        {
+            musicVolSlider.value = GameManager.manager.playerData.musicVol;
+        }
+        if (sfxVolSlider != null)
+        {
+            sfxVolSlider.value = GameManager.manager.playerData.sfxVol;
+        }
+    }
 
     public void LoadNextLevel()
     {

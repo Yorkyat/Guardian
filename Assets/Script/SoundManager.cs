@@ -6,14 +6,26 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     public AudioMixer mainMix;
+    public const float defaultVol = 1f;
+
+    void Start()
+    {
+        SetMusicVol(GameManager.manager.playerData.musicVol);
+        SetSfxVol(GameManager.manager.playerData.sfxVol);
+    }
 
     public void SetMusicVol(float musicVol)
     {
-        mainMix.SetFloat("musicVol", musicVol);
+        float temp;
+        temp = Mathf.Log(musicVol) * 20;
+        Debug.Log(temp);
+        mainMix.SetFloat("musicVol", Mathf.Log(musicVol) * 20);
+        PlayerPrefs.SetFloat("musicVol", musicVol);
     }
 
     public void SetSfxVol(float sfxVol)
     {
-        mainMix.SetFloat("sfxVol", sfxVol);
+        mainMix.SetFloat("sfxVol", Mathf.Log(sfxVol) * 20);
+        PlayerPrefs.SetFloat("sfxVol", sfxVol);
     }
 }
