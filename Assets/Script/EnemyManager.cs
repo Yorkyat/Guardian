@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] enemyArray;
     public float spawnTime = 3.0f;
     public Transform[] spawnPoints;
+    public int noOfEnemy = 0;
 
     private List<GameObject> curEnemyList;
     private List<int> enemyNumList;
@@ -52,9 +53,10 @@ public class EnemyManager : MonoBehaviour
         {
             case 1:
                 // Level 1
+                noOfEnemy = 10;
                 curEnemyList.Add(enemyArray[0]);
-                curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 10;
-                curEnemyList[0].GetComponent<EnemyHealth>().startingHealth = 100;
+                curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 5;
+                curEnemyList[0].GetComponent<EnemyHealth>().startingHealth = 30;
                 enemyNumList.Add(10);
                 break;
         }

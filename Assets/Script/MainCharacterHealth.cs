@@ -7,7 +7,7 @@ public class MainCharacterHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
-    public GameStateManager gameStateManager;
+    public GameStageManager gameStageManager;
 
     private Animator anim;
     private MainCharacter mainCharacter;
@@ -51,7 +51,7 @@ public class MainCharacterHealth : MonoBehaviour
         anim.SetTrigger("Dead");
 
         mainCharacter.enabled = false;
-        gameStateManager.GameOver();
+        gameStageManager.GameOver();
     }
 
     void InitializeHealthBar()

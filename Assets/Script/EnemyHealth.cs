@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public float sinkSpeed = 2.5f;
+    public GameObject gameStageManager;
 
     private Animator anim;
     private CapsuleCollider capsuleCollider;
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        gameStageManager = GameObject.Find("Game Stage Manager");
         InitializeHealthBar();
     }
 
@@ -61,6 +63,7 @@ public class EnemyHealth : MonoBehaviour
         capsuleCollider.isTrigger = true;
         GetComponent<NavMeshAgent>().enabled = false;
         anim.SetTrigger("Dead");
+        gameStageManager.GetComponent<GameStageManager>().DecreaseNoOfEnemy();
     }
 
     public void StartSinking()

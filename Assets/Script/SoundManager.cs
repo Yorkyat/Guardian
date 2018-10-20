@@ -16,9 +16,6 @@ public class SoundManager : MonoBehaviour
 
     public void SetMusicVol(float musicVol)
     {
-        float temp;
-        temp = Mathf.Log(musicVol) * 20;
-        Debug.Log(temp);
         mainMix.SetFloat("musicVol", Mathf.Log(musicVol) * 20);
         PlayerPrefs.SetFloat("musicVol", musicVol);
     }
