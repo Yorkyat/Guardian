@@ -18,11 +18,11 @@ public class Menu : MonoBehaviour
     {
         if (musicVolSlider != null)
         {
-            musicVolSlider.value = GameManager.manager.playerData.musicVol;
+            musicVolSlider.normalizedValue = GameManager.manager.playerData.musicVol;
         }
         if (sfxVolSlider != null)
         {
-            sfxVolSlider.value = GameManager.manager.playerData.sfxVol;
+            sfxVolSlider.normalizedValue = GameManager.manager.playerData.sfxVol;
         }
     }
 

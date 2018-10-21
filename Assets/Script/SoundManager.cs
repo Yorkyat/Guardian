@@ -10,18 +10,20 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        SetMusicVol(GameManager.manager.playerData.musicVol);
-        SetSfxVol(GameManager.manager.playerData.sfxVol);
+        mainMix.SetFloat("musicVol", Mathf.Log(GameManager.manager.playerData.musicVol) * 20);
+        mainMix.SetFloat("sfxVol", Mathf.Log(GameManager.manager.playerData.sfxVol) * 20);
     }
 
     public void SetMusicVol(float musicVol)
     {
+        GameManager.manager.playerData.musicVol = musicVol;
         mainMix.SetFloat("musicVol", Mathf.Log(musicVol) * 20);
         GameManager.manager.Save("musicVol", musicVol);
     }
 
     public void SetSfxVol(float sfxVol)
     {
+        GameManager.manager.playerData.sfxVol = sfxVol;
         mainMix.SetFloat("sfxVol", Mathf.Log(sfxVol) * 20);
         GameManager.manager.Save("sfxVol", sfxVol);
     }
