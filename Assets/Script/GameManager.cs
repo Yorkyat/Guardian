@@ -26,6 +26,21 @@ public class GameManager : MonoBehaviour
         LoadPlayerData();
     }
 
+    public void Save(string key, int value)
+    {
+        PlayerPrefs.SetInt(key, value);
+    }
+
+    public void Save(string key, float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
+    }
+
+    public void Save(string key, string value)
+    {
+        PlayerPrefs.SetString(key, value);
+    }
+
     void LoadPlayerData()
     {
         PlayerData loadedPlayerData = new PlayerData();

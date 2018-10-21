@@ -26,20 +26,44 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void LoadNextLevel()
+    public void NewGame()
     {
         loadingImage.SetActive(true);
         StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex + 1));
+
+        GameManager.manager.playerData.currentLevel = 1;
+        GameManager.manager.Save("currentLevel", GameManager.manager.playerData.currentLevel);
+
+        if(GameManager.manager.playerData.currentLevel > GameManager.manager.playerData.highestLevel)
+        {
+            GameManager.manager.playerData.highestLevel = GameManager.manager.playerData.currentLevel;
+            GameManager.manager.Save("highestLevel", GameManager.manager.playerData.highestLevel);
+        }
     }
 
-    IEnumerator LoadLevelWithBar(int level)
+    public void LoadNextLevel()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex));
+
+        GameManager.manager.playerData.currentLevel++;
+        GameManager.manager.Save("currentLevel", GameManager.manager.playerData.currentLevel);
+
+        if (GameManager.manager.playerData.currentLevel > GameManager.manager.playerData.highestLevel)
+        {
+            GameManager.manager.playerData.highestLevel = GameManager.manager.playerData.currentLevel;
+            GameManager.manager.Save("highestLevel", GameManager.manager.playerData.highestLevel);
+        }
+    }
+
+    IEnumerator LoadLevelWithBar(int buildIndex)
     {
         if (backgroundMusic.isPlaying)
         {
             backgroundMusic.Stop();
         }
 
-        async = SceneManager.LoadSceneAsync(level);
+        async = SceneManager.LoadSceneAsync(buildIndex);
         while (!async.isDone)
         {
             loadingBar.fillAmount = async.progress;

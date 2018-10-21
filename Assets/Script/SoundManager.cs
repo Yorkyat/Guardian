@@ -17,12 +17,12 @@ public class SoundManager : MonoBehaviour
     public void SetMusicVol(float musicVol)
     {
         mainMix.SetFloat("musicVol", Mathf.Log(musicVol) * 20);
-        PlayerPrefs.SetFloat("musicVol", musicVol);
+        GameManager.manager.Save("musicVol", musicVol);
     }
 
     public void SetSfxVol(float sfxVol)
     {
         mainMix.SetFloat("sfxVol", Mathf.Log(sfxVol) * 20);
-        PlayerPrefs.SetFloat("sfxVol", sfxVol);
+        GameManager.manager.Save("sfxVol", sfxVol);
     }
 }

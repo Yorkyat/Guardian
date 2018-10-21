@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class EnemyManager : MonoBehaviour
 
     void LevelSetUp()
     {
-        switch (SceneManager.GetActiveScene().buildIndex)
+        switch (GameManager.manager.playerData.currentLevel)
         {
             case 1:
                 // Level 1

@@ -6,20 +6,23 @@ using UnityEngine.UI;
 public class GameStageManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    public Text enemyNoText;
+    public Text enemyCounterText;
+    public Text levelText;
 
     private int curNoOfEnemy;
 
     private void Start()
     {
         curNoOfEnemy = gameObject.GetComponent<EnemyManager>().noOfEnemy;
-        enemyNoText.text = curNoOfEnemy.ToString();
+        enemyCounterText.text = "Enemies: " + curNoOfEnemy;
+
+        levelText.text = "Level " + GameManager.manager.playerData.currentLevel;
     }
 
     public void DecreaseNoOfEnemy()
     {
         curNoOfEnemy--;
-        enemyNoText.text = curNoOfEnemy.ToString();
+        enemyCounterText.text = "Enemies: " + curNoOfEnemy;
         if(curNoOfEnemy == 0)
         {
             Win();
