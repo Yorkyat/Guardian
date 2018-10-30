@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -50,6 +51,12 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= amount;
         hPBar.Set(startingHealth, currentHealth);
+
+        // Show damage
+        GameObject damageTextObj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Damage Text Prefab"), FindObjectOfType<Canvas>().transform.Find("Damage Display").transform);
+        damageTextObj.GetComponent<SetPositionInCanvas>().target = gameObject.transform;
+        Text damageText = damageTextObj.transform.GetChild(0).GetComponent<Text>();
+        damageText.text = amount.ToString();
 
         if (currentHealth <= 0)
         {
