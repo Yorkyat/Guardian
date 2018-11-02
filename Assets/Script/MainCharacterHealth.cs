@@ -8,6 +8,7 @@ public class MainCharacterHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public GameStageManager gameStageManager;
+    public ScreenFlashing damageFlashing;
 
     private Animator anim;
     private MainCharacter mainCharacter;
@@ -37,7 +38,17 @@ public class MainCharacterHealth : MonoBehaviour
         currentHealth -= amount;
         hPBar.Set(startingHealth, currentHealth);
 
-        if(currentHealth <= 0)
+        if (currentHealth <= (startingHealth / 2) && damageFlashing.incrementCounter < 1)
+        {
+            damageFlashing.Increment();
+        }
+        if (currentHealth <= (startingHealth / 4) && damageFlashing.incrementCounter < 2)
+        {
+            damageFlashing.Increment();
+        }
+        damageFlashing.flashingCondition = true;
+
+        if (currentHealth <= 0)
         {
             Death();
         }
