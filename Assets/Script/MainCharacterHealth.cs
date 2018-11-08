@@ -9,6 +9,7 @@ public class MainCharacterHealth : MonoBehaviour
     public int currentHealth;
     public GameStageManager gameStageManager;
     public ScreenFlashing damageFlashing;
+    public RandomCameraShake randomCameraShake;
 
     private Animator anim;
     private MainCharacter mainCharacter;
@@ -41,12 +42,16 @@ public class MainCharacterHealth : MonoBehaviour
         if (currentHealth <= (startingHealth / 2) && damageFlashing.incrementCounter < 1)
         {
             damageFlashing.Increment();
+            randomCameraShake.magnitude += 0.2f;
         }
         if (currentHealth <= (startingHealth / 4) && damageFlashing.incrementCounter < 2)
         {
             damageFlashing.Increment();
+            randomCameraShake.magnitude += 0.2f;
         }
         damageFlashing.flashingCondition = true;
+
+        randomCameraShake.ShakeXY();
 
         if (currentHealth <= 0)
         {
