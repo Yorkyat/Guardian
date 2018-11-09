@@ -12,6 +12,7 @@ public class GameStageManager : MonoBehaviour
 
     private int curNoOfEnemy;
     private float stageStartTime;
+    private bool gameOver = false;
 
     private void Start()
     {
@@ -25,9 +26,12 @@ public class GameStageManager : MonoBehaviour
 
     private void Update()
     {
-        int minute = (int)((Time.time - stageStartTime) / 60f);
-        int second = (int)((Time.time - stageStartTime) % 60f);
-        timerText.text = minute.ToString("00") + ":" + second.ToString("00");
+        if (!gameOver)
+        {
+            int minute = (int)((Time.time - stageStartTime) / 60f);
+            int second = (int)((Time.time - stageStartTime) % 60f);
+            timerText.text = minute.ToString("00") + ":" + second.ToString("00");
+        }
     }
 
     public void DecreaseNoOfEnemy()
@@ -47,6 +51,7 @@ public class GameStageManager : MonoBehaviour
 
     public void GameOver()
     {
+        gameOver = true;
         gameOverPanel.SetActive(true);
     }
 }
