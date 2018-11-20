@@ -20,12 +20,14 @@ public class MainCharacterHealth : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
-
-        currentHealth = startingHealth;
     }
 
     void Start()
     {
+        startingHealth += GameManager.manager.playerData.currentHPBuff;
+
+        currentHealth = startingHealth;
+
         InitializeHealthBar();
     }
 

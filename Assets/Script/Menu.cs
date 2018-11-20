@@ -28,32 +28,23 @@ public class Menu : MonoBehaviour
 
     public void NewGame()
     {
+        GameManager.manager.ResetLevelData();
+        GameManager.manager.playerData.currentLevel = 1;
+
         loadingImage.SetActive(true);
         StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex + 1));
 
-        GameManager.manager.playerData.currentLevel = 1;
-        GameManager.manager.Save("currentLevel", GameManager.manager.playerData.currentLevel);
-
-        if(GameManager.manager.playerData.currentLevel > GameManager.manager.playerData.highestLevel)
-        {
-            GameManager.manager.playerData.highestLevel = GameManager.manager.playerData.currentLevel;
-            GameManager.manager.Save("highestLevel", GameManager.manager.playerData.highestLevel);
-        }
+        GameManager.manager.SavePlayerData();
     }
 
     public void LoadNextLevel()
     {
+        GameManager.manager.playerData.currentLevel++;
+
         loadingImage.SetActive(true);
         StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex));
 
-        GameManager.manager.playerData.currentLevel++;
-        GameManager.manager.Save("currentLevel", GameManager.manager.playerData.currentLevel);
-
-        if (GameManager.manager.playerData.currentLevel > GameManager.manager.playerData.highestLevel)
-        {
-            GameManager.manager.playerData.highestLevel = GameManager.manager.playerData.currentLevel;
-            GameManager.manager.Save("highestLevel", GameManager.manager.playerData.highestLevel);
-        }
+        GameManager.manager.SavePlayerData();
     }
 
     IEnumerator LoadLevelWithBar(int buildIndex)

@@ -1412,6 +1412,7 @@ MonoBehaviour:
   winPanel: {fileID: 1367866529}
   mainCharacterHealth: {fileID: 802736953}
   numberAnimation: {fileID: 1017012789}
+  menuScript: {fileID: 1288311398}
   enemyCounterText: {fileID: 897951736}
   levelText: {fileID: 1542719487}
   timerText: {fileID: 1432593255}
@@ -1421,6 +1422,12 @@ MonoBehaviour:
   resultHPText: {fileID: 1539897203}
   resultLevelScoreText: {fileID: 745963592}
   resultTotalScoreText: {fileID: 1083016035}
+  hpToggle: {fileID: 1959551516}
+  attackToggle: {fileID: 1158070627}
+  speedToggle: {fileID: 722281111}
+  hpBuffText: {fileID: 750491228}
+  attackBuffText: {fileID: 218929922}
+  speedBuffText: {fileID: 1094509425}
 --- !u!82 &55137200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4429,7 +4436,7 @@ GameObject:
   - component: {fileID: 218929923}
   - component: {fileID: 218929922}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Attack Buff Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4485,7 +4492,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +9999
+  m_Text: +0
 --- !u!222 &218929923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14109,7 +14116,18 @@ MonoBehaviour:
   m_Group: {fileID: 163242110}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55137199}
+        m_MethodName: ChooseSpeedBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -15161,7 +15179,7 @@ GameObject:
   - component: {fileID: 750491229}
   - component: {fileID: 750491228}
   m_Layer: 5
-  m_Name: Label
+  m_Name: HP Buff Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15217,7 +15235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +9999
+  m_Text: +0
 --- !u!222 &750491229
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22629,7 +22647,7 @@ GameObject:
   - component: {fileID: 1094509426}
   - component: {fileID: 1094509425}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Speed Buff Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22685,7 +22703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +9999
+  m_Text: +0
 --- !u!222 &1094509426
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23506,7 +23524,18 @@ MonoBehaviour:
   m_Group: {fileID: 163242110}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55137199}
+        m_MethodName: ChooseAttackBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -33194,7 +33223,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1689516541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55137199}
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1689516541
@@ -38247,7 +38287,18 @@ MonoBehaviour:
   m_Group: {fileID: 163242110}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 55137199}
+        m_MethodName: ChooseHPBuff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0

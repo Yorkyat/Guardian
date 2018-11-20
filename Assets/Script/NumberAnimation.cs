@@ -57,7 +57,7 @@ public class NumberAnimation : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator Animate(string format)
+    private IEnumerator Animate(string format)
     {
         numberText.text = initNum.ToString(format);
         while (curNum != desNum)

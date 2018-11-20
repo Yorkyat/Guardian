@@ -20,6 +20,11 @@ public class MainCharacter : MonoBehaviour
         firiingAudio = GetComponent<AudioSource>();
     }
 
+    void Start()
+    {
+        moveSpeed += GameManager.manager.playerData.currentSpeedBuff;
+    }
+
     void Update()
     {
         Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);

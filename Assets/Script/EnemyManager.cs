@@ -51,16 +51,19 @@ public class EnemyManager : MonoBehaviour
         switch (GameManager.manager.playerData.currentLevel)
         {
             case 1:
-                // Level 1
                 noOfEnemy = 10;
                 curEnemyList.Add(enemyArray[0]);
                 curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 5;
                 curEnemyList[0].GetComponent<EnemyHealth>().startingHealth = 30;
                 enemyNumList.Add(10);
                 break;
+            case 2:
+                noOfEnemy = 10;
+                curEnemyList.Add(enemyArray[1]);
+                curEnemyList[0].GetComponent<EnemyAttack>().attackDamge = 6;
+                curEnemyList[0].GetComponent<EnemyHealth>().startingHealth = 40;
+                enemyNumList.Add(10);
+                break;
         }
-
-
-
     }
 }

@@ -19,6 +19,11 @@ public class Bullet : MonoBehaviour
         mainCharacterHealth = player.GetComponent<MainCharacterHealth>();
     }
 
+    void Start()
+    {
+        attackDamge += GameManager.manager.playerData.currentAttackBuff;
+    }
+
     // Update is called once per frame
     void Update()
     {
