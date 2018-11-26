@@ -9,13 +9,21 @@ public class Menu : MonoBehaviour
     public Image loadingBar;
     public GameObject loadingImage;
     public AudioSource backgroundMusic;
-
-    private AsyncOperation async;
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
+    public GameObject continueGameButton;
+
+    private AsyncOperation async;
 
     void Start()
     {
+        if(continueGameButton != null)
+        {
+            if(GameManager.manager.playerData.currentLevel != 0)
+            {
+                continueGameButton.SetActive(true);
+            }
+        }
         if (musicVolSlider != null)
         {
             musicVolSlider.normalizedValue = GameManager.manager.playerData.musicVol;
@@ -35,6 +43,12 @@ public class Menu : MonoBehaviour
         StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex + 1));
 
         GameManager.manager.SavePlayerData();
+    }
+
+    public void ContinueGame()
+    {
+        loadingImage.SetActive(true);
+        StartCoroutine(LoadLevelWithBar(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void LoadNextLevel()
