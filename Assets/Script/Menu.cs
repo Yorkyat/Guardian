@@ -12,22 +12,44 @@ public class Menu : MonoBehaviour
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
     public GameObject continueGameButton;
+    public Text highestLevelText;
+    public Text highestScoreText;
+    public Text currentLevelText;
+    public Text currentScoreText;
+    public GameObject highestStatsGroup;
+    public GameObject currentStatsGroup;
 
     private AsyncOperation async;
 
     void Start()
     {
-        if(continueGameButton != null)
+        if (highestLevelText != null && highestScoreText != null && GameManager.manager.playerData.highestLevel != 0)
         {
-            if(GameManager.manager.playerData.currentLevel != 0)
+            highestLevelText.text = GameManager.manager.playerData.highestLevel.ToString();
+            highestScoreText.text = GameManager.manager.playerData.highestScore.ToString();
+            highestStatsGroup.SetActive(true);
+        }
+
+        if (currentLevelText != null && currentScoreText != null && GameManager.manager.playerData.currentLevel != 0)
+        {
+            currentLevelText.text = GameManager.manager.playerData.currentLevel.ToString();
+            currentScoreText.text = GameManager.manager.playerData.currentScore.ToString();
+            currentStatsGroup.SetActive(true);
+        }
+
+        if (continueGameButton != null)
+        {
+            if (GameManager.manager.playerData.currentLevel != 0)
             {
                 continueGameButton.SetActive(true);
             }
         }
+
         if (musicVolSlider != null)
         {
             musicVolSlider.normalizedValue = GameManager.manager.playerData.musicVol;
         }
+
         if (sfxVolSlider != null)
         {
             sfxVolSlider.normalizedValue = GameManager.manager.playerData.sfxVol;

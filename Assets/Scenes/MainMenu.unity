@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 126
+  m_MinWidth: -1
   m_MinHeight: 29
   m_PreferredWidth: -1
   m_PreferredHeight: 30
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 75
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 126
+  m_MinWidth: -1
   m_MinHeight: 29
   m_PreferredWidth: -1
   m_PreferredHeight: 30
@@ -448,7 +448,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 75
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -854,7 +854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -350}
+  m_AnchoredPosition: {x: 320, y: -320}
   m_SizeDelta: {x: 640, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344291512
@@ -869,8 +869,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
-    m_Right: 5
+    m_Left: 10
+    m_Right: 10
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 126
+  m_MinWidth: -1
   m_MinHeight: 29
   m_PreferredWidth: -1
   m_PreferredHeight: 30
@@ -1149,7 +1149,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 75
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1524,6 +1524,12 @@ MonoBehaviour:
   musicVolSlider: {fileID: 0}
   sfxVolSlider: {fileID: 0}
   continueGameButton: {fileID: 107788370}
+  highestLevelText: {fileID: 1832395667}
+  highestScoreText: {fileID: 43809212}
+  currentLevelText: {fileID: 113432856}
+  currentScoreText: {fileID: 438768735}
+  highestStatsGroup: {fileID: 1128006617}
+  currentStatsGroup: {fileID: 344291510}
 --- !u!82 &611213000
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2024,8 +2030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
-    m_Right: 5
+    m_Left: 10
+    m_Right: 10
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -2449,7 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 126
+  m_MinWidth: -1
   m_MinHeight: 29
   m_PreferredWidth: -1
   m_PreferredHeight: 30
@@ -2482,7 +2488,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 75
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
